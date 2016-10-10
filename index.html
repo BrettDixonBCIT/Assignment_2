@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- ACIT 1620, assignment #2 -->
+<!-- Brett Dixon A00997869 -->
+
+<html>
+    <head>
+        <title>Brett Dixon's Assignment #2</title>
+    </head>
+    
+    <style>
+        
+        #background {
+            background-color: aquamarine;
+        }
+        #createWrap {
+            position:fixed;
+            left:0;
+            top:0;
+        }
+        
+        #inputs {
+            display:inline-block;
+            vertical-align: top;
+        }
+        #clearCommand {
+            position:fixed;
+            right:0;
+            top:0;
+        }
+        
+        #footer {
+            position:fixed;
+            bottom:-100px;
+            width:100%;
+        }
+    </style>
+    
+    <body>
+        <div id='background'>
+            <div id='createWrap'>
+                <button id='createBox'>Create</button>
+                <div id='inputs'>
+                    <input type='text' placeholder="New Img URL" id='img_url'/>
+                    <br>
+                    <input type='text' placeholder="Heading" id='heading'/>
+                    <br>
+                    <input type='text' placeholder="Message" id='msg' />
+                </div>
+            </div>
+            <button id='clearCommand'>Clear Body</button>
+            <div id='main_section'></div>
+        </div>
+        <div id='footer'>This is the footer</div>
+        
+        <script>
+        
+            var createBut = document.getElementById('createBox');
+            var imgInput = document.getElementById('img_url');
+            var headInput = document.getElementById('heading');
+            var msgInput = document.getElementById('msg');
+            var clearBut = document.getElementById('clearCommand');
+            var mainDiv = document.getElementById('main_section');
+            var footDiv = document.getElementById('footer');
+            
+            createBut.onclick = function(){
+                var outDiv = document.createElement("div");
+                mainDiv.appendChild(outDiv);
+                outDiv.style.backgroundColor = "#FE9";
+                                
+                var newImg = document.createElement("img");
+                newImg.src = imgInput.value;
+                newImg.className = "imgthumb";
+                newImg.style.width="200px";
+                newImg.style.height="auto";
+                outDiv.appendChild(newImg);
+                
+                var inDiv = document.createElement("div");
+                inDiv.style.display = "inline-block";
+                inDiv.style.verticalAlign = "top";
+                outDiv.appendChild(inDiv);
+                
+                var newHead = document.createElement('h3');
+                newHead.innerHTML = headInput.value;
+                inDiv.appendChild(newHead);
+                
+                var newMsg = document.createElement('p');
+                newMsg.innerHTML = msgInput.value;
+                inDiv.appendChild(newMsg);
+                
+                footDiv.style.bottom = '50px';
+                footDiv.innerHTML = 'Created an item.';
+            }
+            
+            clearBut.onclick = function(){
+                mainDiv.innerHTML = '';
+                footDiv.style.bottom = '50px';
+                footDiv.innerHTML = 'Cleared items.';
+            }
+        </script>
+    </body>
+</html>

@@ -30,8 +30,22 @@
         
         #footer {
             position:fixed;
+            left:0;
             bottom:-100px;
-            width:100%;
+            height:25px;
+            width:200px;
+            border: 2px solid black;
+            color: limegreen;
+            background-color:azure;
+            text-align: center;
+            transition: 1s;
+        }
+                    
+        #main_section {
+            position:absolute;
+            top:100px;
+            left:200px;
+            width:70vw; 
         }
     </style>
     
@@ -61,11 +75,12 @@
             var clearBut = document.getElementById('clearCommand');
             var mainDiv = document.getElementById('main_section');
             var footDiv = document.getElementById('footer');
+            var clearDiv = document.getElementById('clear');
             
             createBut.onclick = function(){
                 var outDiv = document.createElement("div");
                 mainDiv.appendChild(outDiv);
-                outDiv.style.backgroundColor = "#FE9";
+                outDiv.style.backgroundColor = "#F59";
                                 
                 var newImg = document.createElement("img");
                 newImg.src = imgInput.value;
@@ -87,14 +102,18 @@
                 newMsg.innerHTML = msgInput.value;
                 inDiv.appendChild(newMsg);
                 
-                footDiv.style.bottom = '50px';
+                footDiv.style.bottom = '25px';
                 footDiv.innerHTML = 'Created an item.';
+                footDiv.style.left = '0';
+                footDiv.style.color = 'limegreen';
             }
             
             clearBut.onclick = function(){
                 mainDiv.innerHTML = '';
-                footDiv.style.bottom = '50px';
+                footDiv.style.bottom = '25px';
                 footDiv.innerHTML = 'Cleared items.';
+                footDiv.style.left = '80vw';
+                footDiv.style.color = 'orangered';
             }
         </script>
     </body>
